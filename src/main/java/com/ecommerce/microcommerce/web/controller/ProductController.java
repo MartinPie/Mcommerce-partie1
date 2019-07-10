@@ -105,7 +105,6 @@ public class ProductController {
     }
 
 
-//    To know which is the marge for each product
     @GetMapping(value = "/AdminProduits")
     public Map<Product, Integer> calculerMargeProduit() {
 
@@ -117,6 +116,17 @@ public class ProductController {
         }
 
         return result;
+    }
+
+
+    @GetMapping(value = "/Produits/Sort")
+    public List<Product> trierProduitsParOrdreAlphabetique() {
+
+//        Marche mieux comme ca mais bon apparemment doit appeler une fonction crée dans le DAO
+//        return productDao.findAll(new Sort("nom"));
+
+        return productDao.findAllByOrderByNom();
+
     }
 
 }
